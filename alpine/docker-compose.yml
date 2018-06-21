@@ -1,0 +1,52 @@
+  presto_master:
+    image: mpolatcan/presto:alpine
+    container_name: presto-master
+    hostname: presto-master
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      - PRESTO_KAFKA_NODES=kafka1:9092,kafka2:9092,kafka3:9092
+      - PRESTO_KAFKA_TABLE_NAMES=tpch.customer,tpch.orders,tpch.lineitem,tpch.part,tpch.partsupp,tpch.supplier,tpch.nation,tpch.region
+      - PRESTO_KAFKA_HIDE_INTERNAL_COLUMNS=false
+      - PRESTO_COORDINATOR=true
+      - PRESTO_NODE_SCHEDULER_INCLUDE_COORDINATOR=false
+      - PRESTO_QUERY_MAX_MEMORY=5GB
+      - PRESTO_QUERY_MAX_MEMORY_PER_NODE=1GB
+      - PRESTO_DISCOVERY_SERVER_ENABLED=true
+      - PRESTO_DISCOVERY_URI=http://0.0.0.0:8080
+      - PRESTO_HTTP_SERVER_HTTP_PORT=8080
+      - PRESTO_NODE_ENVIRONMENT=production
+    depends_on:
+      - kafka1
+      - kafka2
+      - kafka3
+    links:
+      - kafka1
+      - kafka2
+      - kafka3
+
+  presto-worker:
+    image: mpolatcan/presto:alpine
+    restart: always
+    environment:
+      - PRESTO_KAFKA_NODES=kafka1:9092,kafka2:9092,kafka3:9092
+      - PRESTO_KAFKA_TABLE_NAMES=tpch.customer,tpch.orders,tpch.lineitem,tpch.part,tpch.partsupp,tpch.supplier,tpch.nation,tpch.region
+      - PRESTO_KAFKA_HIDE_INTERNAL_COLUMNS=false
+      - PRESTO_COORDINATOR=false
+      - PRESTO_HTTP_SERVER_HTTP_PORT=8080
+      - PRESTO_QUERY_MAX_MEMORY=5GB
+      - PRESTO_QUERY_MAX_MEMORY_PER_NODE=1GB
+      - PRESTO_DISCOVERY_URI=http://presto-master:8080
+      - PRESTO_NODE_ENVIRONMENT=production
+    depends_on:
+      - kafka1
+      - kafka2
+      - kafka3
+      - presto_master
+    links:
+      - kafka1
+      - kafka2
+      - kafka3
+      - presto_master
+
