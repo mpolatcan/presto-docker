@@ -3,7 +3,7 @@ name: presto-docker
 on:
   push:
     branches:
-      - presto
+      - master
 
 jobs:
   build-base-image:
