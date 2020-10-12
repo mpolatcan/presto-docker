@@ -1,0 +1,10 @@
+connector.name: "=oracle"
+connection-url: "=${ORACLE_CONNECTION_URL:=NULL}"
+connection-user: "=${ORACLE_CONNECTION_USER:=NULL}"
+connection-password: "=${ORACLE_CONNECTION_PASSWORD:=NULL}"
+
+oracle.connection-pool:
+  enabled: "NULL"
+  max-size: "NULL"
+  min-size: "NULL"
+  inactive-timeout: "NULL"

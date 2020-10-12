@@ -1,0 +1,11 @@
+connector.name: "=kudu"
+kudu:
+  client:
+    master-addresses: "NULL"
+    default-admin-operation-timeout: "30s"
+    default-operation-timeout: "30s"
+    default-socket-read-timeout: "10s"
+    disable-statistics: "false"
+  schema-emulation:
+    enabled: "false"
+    prefix: "NULL"

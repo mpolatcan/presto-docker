@@ -1,0 +1,4 @@
+connector.name: "=pinot"
+pinot:
+  controller-urls: "NULL"
+  segments-per-split: "NULL"

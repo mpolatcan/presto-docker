@@ -1,0 +1,37 @@
+connector.name: "=cassandra"
+cassandra:
+  contact-points: "NULL"
+  native-protocol-port: "NULL"
+  consistency-level: "NULL"
+  allow-drop-table: "NULL"
+  username: "NULL"
+  password: "NULL"
+  protocol-version: "NULL"
+  fetch-size: "NULL"
+  partition-size-for-batch-select: "NULL"
+  split-size: "NULL"
+  splits-per-node: "NULL"
+  client:
+    read-timeout: "NULL"
+    connect-timeout: "NULL"
+    so-linger: "NULL"
+  retry-policy: "NULL"
+  load-policy:
+    use-dc-aware: "false"
+    dc-aware:
+      local-dc: "NULL"
+      used-hosts-per-remote-dc: "NULL"
+      allow-remote-dc-for-local: "NULL"
+    use-token-aware: "false"
+    shuffle-replicas: "false"
+    allowed-addresses: "NULL"
+  no-host-available-retry-timeout: "1m"
+  speculative-execution:
+    limit: "1"
+    delay: "500ms"
+  tls:
+    enabled: "false"
+    keystore-path: "NULL"
+    truststore-path: "NULL"
+    keystore-password: "NULL"
+    truststore-password: "NULL"

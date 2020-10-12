@@ -1,0 +1,5 @@
+connector.name: "gsheets"
+credentials-path: "=${GSHEETS_CREDENTIALS_PATH:=NULL}"
+metadata-sheet-id: "=${GSHEETS_METADATA_SHEET_ID:=NULL}"
+sheets-data-max-cache-size: "=${GSHEETS_SHEETS_DATA_MAX_CACHE_SIZE:=NULL}"
+sheets-data-expire-after-write: "=${GSHEETS_SHEETS_DATA_EXPIRE_AFTER_WRITE:=NULL}"

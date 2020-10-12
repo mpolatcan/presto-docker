@@ -1,0 +1,42 @@
+name: presto-docker
+
+on:
+  push:
+    branches:
+      - presto
+
+jobs:
+  build-base-image:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repository: [presto]
+        java_version: [11]
+    steps:
+      - uses: actions/checkout@v1
+      - run: echo ${{secrets.DOCKER_PASSWORD}} | docker login -u ${{secrets.DOCKER_USERNAME}} --password-stdin
+      - run: docker build -q
+          -t ${{secrets.DOCKER_USERNAME}}/${{matrix.repository}}:base-java${{matrix.java_version}}
+          --build-arg JAVA_VERSION=${{matrix.java_version}}
+          src/base
+      - run: docker push ${{secrets.DOCKER_USERNAME}}/${{matrix.repository}}:base-java${{matrix.java_version}}
+      - run: docker rmi ${{secrets.DOCKER_USERNAME}}/${{matrix.repository}}:base-java${{matrix.java_version}}
+
+  build-setup-image:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repository: [presto]
+        java_version: [11]
+        presto_version: [344]
+    needs: build-base-image
+    steps:
+      - uses: actions/checkout@v1
+      - run: echo ${{secrets.DOCKER_PASSWORD}} | docker login -u ${{secrets.DOCKER_USERNAME}} --password-stdin
+      - run: docker build -q
+          -t ${{secrets.DOCKER_USERNAME}}/${{matrix.repository}}:${{matrix.presto_version}}-java${{matrix.java_version}}
+          --build-arg PRESTO_VERSION=${{matrix.presto_version}}
+          --build-arg JAVA_VERSION=${{matrix.java_version}}
+          src/setup
+      - run: docker push ${{secrets.DOCKER_USERNAME}}/${{matrix.repository}}:${{matrix.presto_version}}-java${{matrix.java_version}}
+      - run: docker rmi ${{secrets.DOCKER_USERNAME}}/${{matrix.repository}}:${{matrix.presto_version}}-java${{matrix.java_version}}

@@ -1,0 +1,22 @@
+connector.name: "=elasticsearch"
+elasticsearch:
+  host: "NULL"
+  port: "NULL"
+  default-schema-name: "NULL"
+  scroll-size: "NULL"
+  scroll-timeout: "NULL"
+  request-timeout: "NULL"
+  connect-timeout: "NULL"
+  max-retry-time: "NULL"
+  node-refresh-interval: "NULL"
+  tls:
+    enabled: "NULL"
+    verify-hostnames: "NULL"
+    keystore-path: "NULL"
+    truststore-path: "NULL"
+    keystore-password: "NULL"
+    truststore-password: "NULL"
+  aws:
+    region: "NULL"
+    access-key: "NULL"
+    secret-key: "NULL"

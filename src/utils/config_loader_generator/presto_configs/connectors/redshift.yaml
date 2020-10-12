@@ -1,0 +1,4 @@
+connector.name: "=redshift"
+connection-url: "=${REDSHIFT_CONNECTION_URL:=NULL}"
+connection-user: "=${REDSHIFT_CONNECTION_USER:=NULL}"
+connection-password: "=${REDSHIFT_CONNECTION_PASSWORD:=NULL}"

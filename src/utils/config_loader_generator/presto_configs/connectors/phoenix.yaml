@@ -1,0 +1,5 @@
+connector.name: "=phoenix"
+phoenix:
+  connection-url: "NULL"
+  config.resources: "NULL"
+

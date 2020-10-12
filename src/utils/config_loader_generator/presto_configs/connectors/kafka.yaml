@@ -1,0 +1,10 @@
+connector.name: "=kafka"
+kafka:
+  table-names: "NULL"
+  default-schema: "NULL"
+  nodes: "NULL"
+  buffer-size: "NULL"
+  table-description-dir: "NULL"
+  hide-internal-columns: "NULL"
+  messages-per-split: "NULL"
+

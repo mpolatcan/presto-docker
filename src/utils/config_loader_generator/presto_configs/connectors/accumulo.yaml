@@ -1,0 +1,10 @@
+connector.name: "=accumulo"
+accumulo:
+  instance: "NULL"
+  zookeepers: "NULL"
+  username: "NULL"
+  password: "NULL"
+  zookeeper.metadata.root: "/presto-accumulo"
+  cardinality.cache:
+    size: "100000"
+    expire.duration: "5m"

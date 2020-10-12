@@ -1,0 +1,17 @@
+connector.name: "=thrift"
+presto.thrift:
+  client:
+    addresses: "NULL"
+    max-retries: "NULL"
+    max-backoff-delay: "NULL"
+    min-backoff-delay: "NULL"
+    max-retry-time: "NULL"
+    backoff-scale-factor: "NULL"
+    connect-timeout: "NULL"
+    request-timeout: "NULL"
+    socks-proxy: "NULL"
+    max-frame-size: "NULL"
+    transport: "NULL"
+    protocol: "NULL"
+  max-response-size: "NULL"
+  metadata-refresh-threads: "NULL"

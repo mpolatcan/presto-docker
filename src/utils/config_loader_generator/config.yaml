@@ -1,0 +1,62 @@
+config_loader_sh_template: |
+  #!/usr/bin/env bash
+  function load_config() {{
+      if [[ "$2" != "NULL" ]]; then
+          printf "$1\t$2\n" >> "${{PRESTO_CONF_DIR}}/$3"
+      fi
+  }}
+
+  {load_fn_calls}
+
+config_files:
+  - path: presto_configs/config.yaml
+    filename: config.properties
+  - path: presto_configs/node.yaml
+    filename: node.properties
+  - path: presto_configs/connectors/accumulo.yaml
+    filename: catalog/accumulo.properties
+  - path: presto_configs/connectors/bigquery.yaml
+    filename: catalog/bigquery.properties
+  - path: presto_configs/connectors/cassandra.yaml
+    filename: catalog/cassandra.properties
+  - path: presto_configs/connectors/druid.yaml
+    filename: catalog/druid.properties
+  - path: presto_configs/connectors/elasticsearch.yaml
+    filename: catalog/elasticsearch.properties
+  - path: presto_configs/connectors/gsheets.yaml
+    filename: catalog/gsheets.properties
+  - path: presto_configs/connectors/hive.yaml
+    filename: catalog/hive.properties
+  - path: presto_configs/connectors/jmx.yaml
+    filename: catalog/jmx.properties
+  - path: presto_configs/connectors/kafka.yaml
+    filename: catalog/kafka.properties
+  - path: presto_configs/connectors/kinesis.yaml
+    filename: catalog/kinesis.properties
+  - path: presto_configs/connectors/kudu.yaml
+    filename: catalog/kudu.properties
+  - path: presto_configs/connectors/memsql.yaml
+    filename: catalog/memsql.properties
+  - path: presto_configs/connectors/mongodb.yaml
+    filename: catalog/mongodb.properties
+  - path: presto_configs/connectors/mysql.yaml
+    filename: catalog/mysql.properties
+  - path: presto_configs/connectors/oracle.yaml
+    filename: catalog/oracle.properties
+  - path: presto_configs/connectors/phoenix.yaml
+    filename: catalog/phoenix.properties
+  - path: presto_configs/connectors/pinot.yaml
+    filename: catalog/pinot.properties
+  - path: presto_configs/connectors/postgresql.yaml
+    filename: catalog/postgresql.properties
+  - path: presto_configs/connectors/prometheus.yaml
+    filename: catalog/prometheus.properties
+  - path: presto_configs/connectors/redis.yaml
+    filename: catalog/redis.properties
+  - path: presto_configs/connectors/redshift.yaml
+    filename: catalog/redshift.properties
+  - path: presto_configs/connectors/sqlserver.yaml
+    filename: catalog/sqlserver.properties
+  - path: presto_configs/connectors/thrift.yaml
+    filename: catalog/thrift.properties
+output_dir: ../../base

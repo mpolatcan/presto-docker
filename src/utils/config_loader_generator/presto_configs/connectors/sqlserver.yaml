@@ -1,0 +1,4 @@
+connector.name: "=sqlserver"
+connection-url: "=${SQLSERVER_CONNECTION_URL:=NULL}"
+connection-user: "=${SQLSERVER_CONNECTION_USER:=NULL}"
+connection-password: "=${SQLSERVER_CONNECTION_PASSWORD:=NULL}"

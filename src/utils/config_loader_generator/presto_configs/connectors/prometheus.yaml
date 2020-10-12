@@ -1,0 +1,7 @@
+connector.name: "=prometheus"
+prometheus:
+  uri: "NULL"
+  query.chunk.size.duration: "NULL"
+  max.query.range.duration: "NULL"
+  cache.ttl: "NULL"
+  bearer.token.file: "NULL"

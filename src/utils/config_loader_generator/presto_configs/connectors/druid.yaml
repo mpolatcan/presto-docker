@@ -1,0 +1,4 @@
+connector.name: "=druid"
+connection-url: "=${DRUID_CONNECTION_URL:=NULL}"
+connection-user: "=${DRUID_CONNECTION_USER:=NULL}"
+connection-password: "=${DRUID_CONNECTION_PASSWORD:=NULL}"

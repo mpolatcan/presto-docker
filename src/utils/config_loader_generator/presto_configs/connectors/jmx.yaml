@@ -1,0 +1,5 @@
+connector.name: "=jmx"
+jmx:
+  dump-tables: "NULL"
+  dump-period: "10s"
+  max-entries: "86400"

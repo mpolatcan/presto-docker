@@ -1,0 +1,4 @@
+connector.name: "=postgresql"
+connection-url: "=${POSTGRESQL_CONNECTION_URL:=NULL}"
+connection-user: "=${POSTGRESQL_CONNECTION_USER:=NULL}"
+connection-password: "=${POSTGRESQL_CONNECTION_PASSWORD:=NULL}"

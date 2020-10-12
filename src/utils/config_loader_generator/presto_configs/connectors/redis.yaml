@@ -1,0 +1,12 @@
+connector.name: "=redis"
+redis:
+  table-names: "NULL"
+  default-schema: "NULL"
+  nodes: "NULL"
+  scan-count: "NULL"
+  key-prefix-schema-table: "NULL"
+  key-delimiter: "NULL"
+  table-description-dir: "NULL"
+  hide-internal-columns: "NULL"
+  database-index: "NULL"
+  password: "NULL"

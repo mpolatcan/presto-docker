@@ -1,0 +1,4 @@
+connector.name: "=memsql"
+connection-url: "=${MEMSQL_CONNECTION_URL:=NULL}"
+connection-user: "=${MEMSQL_CONNECTION_USER:=NULL}"
+connection-password: "=${MEMSQL_CONNECTION_PASSWORD:=NULL}"

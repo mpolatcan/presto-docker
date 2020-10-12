@@ -1,0 +1,11 @@
+connector.name: "=bigquery"
+bigquery:
+  project-id: "NULL"
+  parent-project-id: "NULL"
+  parallelism: "NULL"
+  views-enabled: "false"
+  view-materialization-project: "NULL"
+  view-materialization-dataset: "NULL"
+  max-read-rows-retries: "3"
+  credentials-key: "NULL"
+  credentials-file: "NULL"
