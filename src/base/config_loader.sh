@@ -5,6 +5,24 @@ function load_config() {
     fi
 }
 
+# Load Jvm Configuration
+cat <<EOF > ${PRESTO_CONF_DIR}/jvm.config
+-server
+-Xmx${JVM_HEAP_SIZE:=16G}
+-XX:-UseBiasedLocking
+-XX:+UseG1GC
+-XX:G1HeapRegionSize=${JVM_G1_HEAP_REGION_SIZE:=32M}
+-XX:+ExplicitGCInvokesConcurrent
+-XX:+ExitOnOutOfMemoryError
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:ReservedCodeCacheSize=${JVM_RESERVED_CODE_CACHE_SIZE:=512M}
+-XX:PerMethodRecompilationCutoff=${JVM_PER_METHOD_RECOMPILATION_CUTOFF:=10000}
+-XX:PerBytecodeRecompilationCutoff=${JVM_PER_BYTECODE_RECOMPILATION_CUTOFF:=10000}
+-Djdk.attach.allowAttachSelf=true
+-Djdk.nio.maxCachedBufferSize=${JVM_JDK_NIO_MAX_CACHED_BUFFER_SIZE:=2000000}
+EOF
+
+# Load Presto main, node and connector configurations
 load_config "coordinator" ${COORDINATOR:=true} "config.properties"
 load_config "node-scheduler.include-coordinator" ${NODE_SCHEDULER_INCLUDE_COORDINATOR:=false} "config.properties"
 load_config "http-server.http.port" ${HTTP_SERVER_HTTP_PORT:=8080} "config.properties"
