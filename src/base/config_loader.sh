@@ -5,7 +5,7 @@ function load_config() {
     fi
 }
 
-# Load Jvm Configuration
+# Load Jvm configurations
 cat <<EOF > ${PRESTO_CONF_DIR}/jvm.config
 -server
 -Xmx${JVM_HEAP_SIZE:=16G}
@@ -371,3 +371,13 @@ load_config "presto.thrift.client.protocol" ${PRESTO_THRIFT_CLIENT_PROTOCOL:=NUL
 load_config "presto.thrift.max-response-size" ${PRESTO_THRIFT_MAX_RESPONSE_SIZE:=NULL} "catalog/thrift.properties"
 load_config "presto.thrift.metadata-refresh-threads" ${PRESTO_THRIFT_METADATA_REFRESH_THREADS:=NULL} "catalog/thrift.properties"
 # ===========================================================================
+
+CONNECTOR_CONFIG_FILES=$(ls ${PRESTO_CONNECTOR_CONF_DIR})
+
+for CONNECTOR_CONFIG_FILE in ${CONNECTOR_CONFIG_FILES[@]}; do
+    for CONNECTOR in ${CONNECTORS[@]}; do
+        if [[ "${CONNECTOR}.properties" -ne "${CONNECTOR_CONFIG_FILE}" ]]; then
+            rm ${PRESTO_CONNECTOR_CONF_DIR}/${CONNECTOR_CONFIG_FILE}
+        fi
+    done
+done
