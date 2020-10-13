@@ -1,0 +1,34 @@
+version: "3.5"
+services:
+  presto-coordinator:
+    image: mpolatcan/presto:344-java11
+    container_name: presto-coordinator
+    hostname: presto-coordinator
+    environment:
+      COORDINATOR: "true"
+      NODE_SCHEDULER_INCLUDE_COORDINATOR: "false"
+      QUERY_MAX_MEMORY: "5GB"
+      QUERY_MAX_MEMORY_PER_NODE: "1GB"
+      DISCOVERY_SERVER_ENABLED: "true"
+      DISCOVERY_URI: "http://0.0.0.0:8080"
+      HTTP_SERVER_HTTP_PORT: "8080"
+      NODE_ENVIRONMENT: "production"
+    ports:
+      - 8080:8080
+
+  presto-worker:
+    image: mpolatcan/presto:344-java11
+    environment:
+      COORDINATOR: "false"
+      HTTP_SERVER_HTTP_PORT: "8080"
+      QUERY_MAX_MEMORY: "5GB"
+      QUERY_MAX_MEMORY_PER_NODE: "1GB"
+      DISCOVERY_URI: "http://presto-coordinator:8080"
+      NODE_ENVIRONMENT: "production"
+
+  postgres:
+    image: postgres
+    container_name: postgres
+    hostname: postgres
+    ports:
+      - 5432:5432

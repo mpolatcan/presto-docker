@@ -1,4 +1,4 @@
 node:
   environment: "production"
-  id: "NULL"
-  data-dir: "=${PRESTO_HOME}/data"
+  id: "=${HOSTNAME}"
+  data-dir: "=${PRESTO_USER_HOME}/data"

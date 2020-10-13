@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 function load_config() {
     if [[ "$2" != "NULL" ]]; then
-        printf "$1\t$2\n" >> "${PRESTO_CONF_DIR}/$3"
+        printf "$1=$2\n" >> "${PRESTO_CONF_DIR}/$3"
     fi
 }
 
@@ -15,8 +15,8 @@ load_config "discovery-server.enabled" ${DISCOVERY_SERVER_ENABLED:=true} "config
 load_config "discovery.uri" ${DISCOVERY_URI:=NULL} "config.properties"
 # ===========================================================================
 load_config "node.environment" ${NODE_ENVIRONMENT:=production} "node.properties"
-load_config "node.id" ${NODE_ID:=NULL} "node.properties"
-load_config "node.data-dir" "${PRESTO_HOME}/data" "node.properties"
+load_config "node.id" "${HOSTNAME}" "node.properties"
+load_config "node.data-dir" "${PRESTO_USER_HOME}/data" "node.properties"
 # ===========================================================================
 load_config "connector.name" "accumulo" "catalog/accumulo.properties"
 load_config "accumulo.instance" ${ACCUMULO_INSTANCE:=NULL} "catalog/accumulo.properties"

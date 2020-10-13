@@ -2,7 +2,7 @@ config_loader_sh_template: |
   #!/usr/bin/env bash
   function load_config() {{
       if [[ "$2" != "NULL" ]]; then
-          printf "$1\t$2\n" >> "${{PRESTO_CONF_DIR}}/$3"
+          printf "$1=$2\n" >> "${{PRESTO_CONF_DIR}}/$3"
       fi
   }}
 
