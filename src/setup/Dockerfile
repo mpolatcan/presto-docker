@@ -19,4 +19,4 @@ RUN wget ${PRESTO_DOWNLOAD_LINK} ${PRESTO_CLI_DOWNLOAD_LINK} && \
 
 USER presto
 WORKDIR ${PRESTO_USER_HOME}
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+ENTRYPOINT ["./entrypoint.sh"]
