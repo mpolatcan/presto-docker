@@ -20,8 +20,13 @@ spec:
       containers:
       - name: presto-coordinator
         image: mpolatcan/presto:344-java11
+        imagePullPolicy: Always
         envFrom:
           - configMapRef:
               name: presto-coordinator-config
+        readinessProbe:
+          exec:
+            command:
+              - null
         ports:
         - containerPort: 8080

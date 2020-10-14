@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: presto-coordinator-leader-elector-script
+  labels:
+    app: presto
+    unit: leader-elector-script
+data:
+  leader_election.sh: |
+    #!/bin/bash

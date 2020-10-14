@@ -20,6 +20,7 @@ spec:
       containers:
       - name: presto-worker
         image: mpolatcan/presto:344-java11
+        imagePullPolicy: Always
         envFrom:
           - configMapRef:
               name: presto-worker-config
