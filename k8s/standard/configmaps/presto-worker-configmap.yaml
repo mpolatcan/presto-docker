@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: presto-worker-config
+  labels:
+    app: presto
+    unit: worker
+data:
+  COORDINATOR: "false"
+  QUERY_MAX_MEMORY: "5GB"
+  QUERY_MAX_MEMORY_PER_NODE: "1GB"
+  DISCOVERY_SERVER_HOSTNAME: "presto-coordinator"
+  NODE_ENVIRONMENT: "production"

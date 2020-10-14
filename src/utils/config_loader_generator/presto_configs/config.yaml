@@ -6,4 +6,4 @@ query:
   max-memory-per-node: "1GB"
   max-total-memory-per-node: "2GB"
 discovery-server.enabled: "NULL"
-discovery.uri: "=http://${DISCOVERY_SERVER_HOSTNAME:=0.0.0.0}:${DISCOVERY_SERVER_PORT:=8080}}"
+discovery.uri: "=http://${DISCOVERY_SERVER_HOSTNAME:=0.0.0.0}:${DISCOVERY_SERVER_PORT:=8080}"

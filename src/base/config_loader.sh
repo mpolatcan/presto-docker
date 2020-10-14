@@ -30,7 +30,7 @@ load_config "query.max-memory" ${QUERY_MAX_MEMORY:=50GB} "config.properties"
 load_config "query.max-memory-per-node" ${QUERY_MAX_MEMORY_PER_NODE:=1GB} "config.properties"
 load_config "query.max-total-memory-per-node" ${QUERY_MAX_TOTAL_MEMORY_PER_NODE:=2GB} "config.properties"
 load_config "discovery-server.enabled" ${DISCOVERY_SERVER_ENABLED:=NULL} "config.properties"
-load_config "discovery.uri" "http://${DISCOVERY_SERVER_HOSTNAME:=0.0.0.0}:${DISCOVERY_SERVER_PORT:=8080}}" "config.properties"
+load_config "discovery.uri" "http://${DISCOVERY_SERVER_HOSTNAME:=0.0.0.0}:${DISCOVERY_SERVER_PORT:=8080}" "config.properties"
 # ===========================================================================
 load_config "node.environment" ${NODE_ENVIRONMENT:=production} "node.properties"
 load_config "node.id" "${HOSTNAME}" "node.properties"

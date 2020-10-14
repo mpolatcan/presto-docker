@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: presto-coordinator
+  labels:
+    app: presto
+    unit: coordinator
+spec:
+  serviceName: presto-coordinator
+  selector:
+    matchLabels:
+      app: presto
+      unit: coordinator
+  template:
+    metadata:
+      labels:
+        app: presto
+        unit: coordinator
+    spec:
+      containers:
+      - name: presto-coordinator
+        image: mpolatcan/presto:344-java11
+        envFrom:
+          - configMapRef:
+              name: presto-coordinator-config
+        ports:
+        - containerPort: 8080

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: presto-worker
+  labels:
+    app: presto
+    unit: worker
+spec:
+  serviceName: presto-worker
+  selector:
+    matchLabels:
+      app: presto
+      unit: worker
+  template:
+    metadata:
+      labels:
+        app: presto
+        unit: worker
+    spec:
+      containers:
+      - name: presto-worker
+        image: mpolatcan/presto:344-java11
+        envFrom:
+          - configMapRef:
+              name: presto-worker-config
+        ports:
+        - containerPort: 8080
