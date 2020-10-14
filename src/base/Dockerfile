@@ -11,6 +11,7 @@ ENV PATH=$PATH:${PRESTO_HOME}/bin
 
 ADD entrypoint.sh ${PRESTO_USER_HOME}/entrypoint.sh
 ADD config_loader.sh ${PRESTO_USER_HOME}/presto_config_loader.sh
+ADD presto_coordinator_leader_elector.sh ${PRESTO_USER_HOME}/presto_coordinator_leader_elector.sh
 
 RUN apt-get update && \
     apt-get -y install --no-install-recommends python \
@@ -22,4 +23,6 @@ RUN apt-get update && \
     addgroup presto && adduser --disabled-password --gecos "" --ingroup presto presto && \
     mkdir -p ${PRESTO_HOME} ${PRESTO_CONF_DIR} ${PRESTO_CONNECTOR_CONF_DIR} ${PRESTO_DATA_DIR} && \
     chown -R presto:presto ${PRESTO_USER_HOME} && \
-    chmod +x ${PRESTO_USER_HOME}/entrypoint.sh ${PRESTO_USER_HOME}/presto_config_loader.sh
+    chmod +x ${PRESTO_USER_HOME}/entrypoint.sh \
+             ${PRESTO_USER_HOME}/presto_config_loader.sh \
+             ${PRESTO_USER_HOME}/presto_coordinator_leader_elector.sh
