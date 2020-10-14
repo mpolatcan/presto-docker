@@ -29,8 +29,8 @@ load_config "http-server.http.port" ${HTTP_SERVER_HTTP_PORT:=8080} "config.prope
 load_config "query.max-memory" ${QUERY_MAX_MEMORY:=50GB} "config.properties"
 load_config "query.max-memory-per-node" ${QUERY_MAX_MEMORY_PER_NODE:=1GB} "config.properties"
 load_config "query.max-total-memory-per-node" ${QUERY_MAX_TOTAL_MEMORY_PER_NODE:=2GB} "config.properties"
-load_config "discovery-server.enabled" ${DISCOVERY_SERVER_ENABLED:=true} "config.properties"
-load_config "discovery.uri" ${DISCOVERY_URI:=NULL} "config.properties"
+load_config "discovery-server.enabled" ${DISCOVERY_SERVER_ENABLED:=NULL} "config.properties"
+load_config "discovery.uri" "http://${COORDINATOR_HOSTNAME:=0.0.0.0}:${HTTP_SERVER_HTTP_PORT}" "config.properties"
 # ===========================================================================
 load_config "node.environment" ${NODE_ENVIRONMENT:=production} "node.properties"
 load_config "node.id" "${HOSTNAME}" "node.properties"
@@ -374,15 +374,16 @@ load_config "presto.thrift.metadata-refresh-threads" ${PRESTO_THRIFT_METADATA_RE
 
 CONNECTOR_CONFIG_FILES=$(ls ${PRESTO_CONNECTOR_CONF_DIR})
 
-for CONNECTOR_CONFIG_FILE in ${CONNECTOR_CONFIG_FILES[@]}; do
-    if [[ "${CONNECTORS}" != "" ]]; then
+if [[ "${CONNECTORS}" != "" ]]; then
+    for CONNECTOR_CONFIG_FILE in ${CONNECTOR_CONFIG_FILES[@]}; do
         for CONNECTOR in ${CONNECTORS[@]}; do
             if [[ "${CONNECTOR}.properties" != "${CONNECTOR_CONFIG_FILE}" ]]; then
                 echo "Removing connector config: \"${CONNECTOR}.properties\""
                 rm ${PRESTO_CONNECTOR_CONF_DIR}/${CONNECTOR_CONFIG_FILE}
             fi
         done
-    else
-        rm ${PRESTO_CONNECTOR_CONF_DIR}/*.properties
-    fi
-done
+    done
+else
+    echo "There is no defined connectors, so all generated configurations will be deleted!"
+    rm ${PRESTO_CONNECTOR_CONF_DIR}/*.properties
+fi

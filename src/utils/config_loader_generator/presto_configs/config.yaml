@@ -5,5 +5,5 @@ query:
   max-memory: "50GB"
   max-memory-per-node: "1GB"
   max-total-memory-per-node: "2GB"
-discovery-server.enabled: "true"
-discovery.uri: "NULL"
+discovery-server.enabled: "NULL"
+discovery.uri: "=http://${COORDINATOR_HOSTNAME:=0.0.0.0}:${HTTP_SERVER_HTTP_PORT}"

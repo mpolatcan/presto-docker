@@ -10,8 +10,6 @@ services:
       QUERY_MAX_MEMORY: "5GB"
       QUERY_MAX_MEMORY_PER_NODE: "1GB"
       DISCOVERY_SERVER_ENABLED: "true"
-      DISCOVERY_URI: "http://0.0.0.0:8080"
-      HTTP_SERVER_HTTP_PORT: "8080"
       NODE_ENVIRONMENT: "production"
     ports:
       - 8080:8080
