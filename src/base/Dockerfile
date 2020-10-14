@@ -14,7 +14,8 @@ ADD config_loader.sh ${PRESTO_USER_HOME}/presto_config_loader.sh
 
 RUN apt-get update && \
     apt-get -y install --no-install-recommends python \
-                                               wget && \
+                                               wget \
+                                               nano && \
     rm -rf /var/lib/apt/lists/* && \
     addgroup presto && adduser --disabled-password --gecos "" --ingroup presto presto && \
     mkdir -p ${PRESTO_HOME} ${PRESTO_CONF_DIR} ${PRESTO_CONNECTOR_CONF_DIR} ${PRESTO_DATA_DIR} && \
