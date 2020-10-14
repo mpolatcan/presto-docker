@@ -29,8 +29,7 @@ spec:
             command:
               - /bin/bash
               - -c
-              - |
-                ${PRESTO_USER_HOME}/presto_coordinator_leader_elector.sh
+              - /home/presto/presto_coordinator_leader_elector.sh
           periodSeconds: 5
           initialDelaySeconds: 5
         ports:

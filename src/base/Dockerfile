@@ -20,6 +20,9 @@ RUN apt-get update && \
                                                less \
                                                curl && \
     rm -rf /var/lib/apt/lists/* && \
+    curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" && \
+    chmod +x ./kubectl && \
+    mv ./kubectl /usr/local/bin/kubectl && \
     addgroup presto && adduser --disabled-password --gecos "" --ingroup presto presto && \
     mkdir -p ${PRESTO_HOME} ${PRESTO_CONF_DIR} ${PRESTO_CONNECTOR_CONF_DIR} ${PRESTO_DATA_DIR} && \
     chown -R presto:presto ${PRESTO_USER_HOME} && \
