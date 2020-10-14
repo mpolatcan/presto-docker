@@ -18,15 +18,17 @@ services:
     image: mpolatcan/presto:344-java11
     environment:
       COORDINATOR: "false"
-      HTTP_SERVER_HTTP_PORT: "8080"
       QUERY_MAX_MEMORY: "5GB"
       QUERY_MAX_MEMORY_PER_NODE: "1GB"
-      DISCOVERY_URI: "http://presto-coordinator:8080"
+      COORDINATOR_HOSTNAME: "presto-coordinator"
       NODE_ENVIRONMENT: "production"
 
   postgres:
     image: postgres
     container_name: postgres
     hostname: postgres
+    environment:
+      POSTGRES_USER: "presto"
+      POSTGRES_PASSWORD: "presto"
     ports:
       - 5432:5432
