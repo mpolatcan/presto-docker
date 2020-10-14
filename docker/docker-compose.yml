@@ -11,6 +11,11 @@ services:
       QUERY_MAX_MEMORY_PER_NODE: "1GB"
       DISCOVERY_SERVER_ENABLED: "true"
       NODE_ENVIRONMENT: "production"
+      CONNECTORS: |
+        postgresql
+      POSTGRESQL_CONNECTION_URL: "jdbc:postgresql://postgres:5432/postgres"
+      POSTGRESQL_CONNECTION_USER: "presto"
+      POSTGRESQL_CONNECTION_PASSWORD: "presto"
     ports:
       - 8080:8080
 
@@ -22,6 +27,11 @@ services:
       QUERY_MAX_MEMORY_PER_NODE: "1GB"
       COORDINATOR_HOSTNAME: "presto-coordinator"
       NODE_ENVIRONMENT: "production"
+      CONNECTORS: |
+        postgresql
+      POSTGRESQL_CONNECTION_URL: "jdbc:postgresql://postgres:5432/postgres"
+      POSTGRESQL_CONNECTION_USER: "presto"
+      POSTGRESQL_CONNECTION_PASSWORD: "presto"
 
   postgres:
     image: postgres

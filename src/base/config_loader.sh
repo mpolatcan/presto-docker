@@ -375,10 +375,12 @@ load_config "presto.thrift.metadata-refresh-threads" ${PRESTO_THRIFT_METADATA_RE
 CONNECTOR_CONFIG_FILES=$(ls ${PRESTO_CONNECTOR_CONF_DIR})
 
 if [[ "${CONNECTORS}" != "" ]]; then
+    echo "Defined connectors are: ${CONNECTORS}"
+
     for CONNECTOR_CONFIG_FILE in ${CONNECTOR_CONFIG_FILES[@]}; do
         for CONNECTOR in ${CONNECTORS[@]}; do
             if [[ "${CONNECTOR}.properties" != "${CONNECTOR_CONFIG_FILE}" ]]; then
-                echo "Removing connector config: \"${CONNECTOR}.properties\""
+                echo "Removing connector config: \"${CONNECTOR_CONFIG_FILE}\""
                 rm ${PRESTO_CONNECTOR_CONF_DIR}/${CONNECTOR_CONFIG_FILE}
             fi
         done
