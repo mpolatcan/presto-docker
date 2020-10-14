@@ -25,7 +25,7 @@ services:
       COORDINATOR: "false"
       QUERY_MAX_MEMORY: "5GB"
       QUERY_MAX_MEMORY_PER_NODE: "1GB"
-      COORDINATOR_HOSTNAME: "presto-coordinator"
+      DISCOVERY_SERVER_HOSTNAME: "presto-coordinator"
       NODE_ENVIRONMENT: "production"
       CONNECTORS: |
         postgresql
