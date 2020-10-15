@@ -14,4 +14,4 @@ data:
   NODE_ENVIRONMENT: "production"
   CONNECTORS: |
     hive
-  HIVE_METASTORE_URI: "thrift://hive-metastore:9083"
+  HIVE_METASTORE_URI: "thrift://hive-metastore-svc:9083"
