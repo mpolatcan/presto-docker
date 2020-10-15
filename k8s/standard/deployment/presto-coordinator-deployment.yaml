@@ -7,6 +7,7 @@ metadata:
     unit: coordinator
 spec:
   serviceName: presto-coordinator
+  podManagementPolicy: Parallel
   selector:
     matchLabels:
       app: presto
@@ -17,6 +18,7 @@ spec:
         app: presto
         unit: coordinator
     spec:
+      serviceAccountName: presto-coordinator-sa
       containers:
       - name: presto-coordinator
         image: mpolatcan/presto:344-java11

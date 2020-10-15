@@ -7,6 +7,7 @@ metadata:
     unit: worker
 spec:
   serviceName: presto-worker
+  podManagementPolicy: Parallel
   selector:
     matchLabels:
       app: presto
