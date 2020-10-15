@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hive-metastore-config
+  labels:
+    app: presto
+    unit: hive-metastore
+data:
+  HADOOP_DAEMONS: |
+    namenode
+    datanode
+  HIVE_SERVICES: |
+    metastore
+  JAVAX_JDO_OPTION_CONNECTIONURL: "jdbc:postgresql://presto-db.cackfupdsk0d.eu-west-1.rds.amazonaws.com:5432/metastore"
+  JAVAX_JDO_OPTION_CONNECTIONDRIVERNAME: "org.postgresql.Driver"
+  JAVAX_JDO_OPTION_CONNECTIONUSERNAME: "postgres"
+  JAVAX_JDO_OPTION_CONNECTIONPASSWORD: "zAJTMLGG5rv54CPHnXgb"
+  HIVE_METASTORE_DB_TYPE: "postgres"
+  POSTGRES_USER: "postgres"
+  POSTGRES_PASSWORD: "zAJTMLGG5rv54CPHnXgb"
+  POSTGRES_HOST: "presto-db.cackfupdsk0d.eu-west-1.rds.amazonaws.com"
+  POSTGRES_DB: "metastore"

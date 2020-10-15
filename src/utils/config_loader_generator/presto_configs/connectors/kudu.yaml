@@ -2,10 +2,10 @@ connector.name: "=kudu"
 kudu:
   client:
     master-addresses: "NULL"
-    default-admin-operation-timeout: "30s"
-    default-operation-timeout: "30s"
-    default-socket-read-timeout: "10s"
-    disable-statistics: "false"
+    default-admin-operation-timeout: "NULL"
+    default-operation-timeout: "NULL"
+    default-socket-read-timeout: "NULL"
+    disable-statistics: "NULL"
   schema-emulation:
-    enabled: "false"
+    enabled: "NULL"
     prefix: "NULL"

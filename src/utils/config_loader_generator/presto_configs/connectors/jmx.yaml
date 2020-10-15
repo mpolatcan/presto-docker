@@ -1,5 +1,5 @@
 connector.name: "=jmx"
 jmx:
   dump-tables: "NULL"
-  dump-period: "10s"
-  max-entries: "86400"
+  dump-period: "NULL"
+  max-entries: "NULL"

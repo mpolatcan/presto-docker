@@ -12,3 +12,6 @@ data:
   QUERY_MAX_MEMORY_PER_NODE: "1GB"
   DISCOVERY_SERVER_ENABLED: "true"
   NODE_ENVIRONMENT: "production"
+  CONNECTORS: |
+    hive
+  HIVE_METASTORE_URI: "thrift://hive-metastore:9083"

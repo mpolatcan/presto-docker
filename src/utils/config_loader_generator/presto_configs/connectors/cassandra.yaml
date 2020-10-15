@@ -17,20 +17,20 @@ cassandra:
     so-linger: "NULL"
   retry-policy: "NULL"
   load-policy:
-    use-dc-aware: "false"
+    use-dc-aware: "NULL"
     dc-aware:
       local-dc: "NULL"
       used-hosts-per-remote-dc: "NULL"
       allow-remote-dc-for-local: "NULL"
-    use-token-aware: "false"
-    shuffle-replicas: "false"
+    use-token-aware: "NULL"
+    shuffle-replicas: "NULL"
     allowed-addresses: "NULL"
-  no-host-available-retry-timeout: "1m"
+  no-host-available-retry-timeout: "NULL"
   speculative-execution:
-    limit: "1"
-    delay: "500ms"
+    limit: "NULL"
+    delay: "NULL"
   tls:
-    enabled: "false"
+    enabled: "NULL"
     keystore-path: "NULL"
     truststore-path: "NULL"
     keystore-password: "NULL"

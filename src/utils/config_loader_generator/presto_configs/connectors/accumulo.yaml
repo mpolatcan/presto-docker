@@ -4,7 +4,7 @@ accumulo:
   zookeepers: "NULL"
   username: "NULL"
   password: "NULL"
-  zookeeper.metadata.root: "/presto-accumulo"
+  zookeeper.metadata.root: "NULL"
   cardinality.cache:
-    size: "100000"
-    expire.duration: "5m"
+    size: "NULL"
+    expire.duration: "NULL"

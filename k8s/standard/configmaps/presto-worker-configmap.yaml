@@ -11,3 +11,6 @@ data:
   QUERY_MAX_MEMORY_PER_NODE: "1GB"
   DISCOVERY_SERVER_HOSTNAME: "presto-coordinator"
   NODE_ENVIRONMENT: "production"
+  CONNECTORS: |
+    hive
+  HIVE_METASTORE_URI: "thrift://hive-metastore:9083"
