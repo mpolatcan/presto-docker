@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hive-metastore
+  labels:
+    unit: hive-metastore
+spec:
+  template:
+    spec:
+      containers:
+      - name: hive-metastore
+        image: mpolatcan/hive:3.1.2-hadoop-3.1.4-java8
+        resources:
+          requests:
+            cpu: 500m
+            memory: 512Mi
+          limits:
+            cpu: 1000m
+            memory: 1024Mi

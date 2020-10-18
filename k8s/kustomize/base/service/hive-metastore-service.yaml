@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hive-metastore-svc
+  labels:
+    unit: hive-metastore
+spec:
+  selector:
+    unit: hive-metastore
+  ports:
+    - port: 9083
+      targetPort: 9083
+  type: ClusterIP

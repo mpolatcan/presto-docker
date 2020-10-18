@@ -3,19 +3,16 @@ kind: StatefulSet
 metadata:
   name: presto-worker
   labels:
-    app: presto
     unit: worker
 spec:
   serviceName: presto-worker
   podManagementPolicy: Parallel
   selector:
     matchLabels:
-      app: presto
       unit: worker
   template:
     metadata:
       labels:
-        app: presto
         unit: worker
     spec:
       serviceAccountName: presto-sa

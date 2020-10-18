@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: presto-worker
+  labels:
+    unit: worker
+spec:
+  template:
+    spec:
+      containers:
+      - name: presto-worker
+        image: mpolatcan/presto:344-java11
+        resources:
+          requests:
+            cpu: 500m
+            memory: 512Mi
+          limits:
+            cpu: 1000m
+            memory: 1024Mi

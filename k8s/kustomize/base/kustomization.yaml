@@ -1,0 +1,29 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: presto
+commonLabels:
+  app: presto
+  environment: default
+resources:
+  - rbac/presto-sa.yaml
+  - rbac/presto-sa-role.yaml
+  - rbac/presto-sa-rolebinding.yaml
+  - deployment/hive-metastore-deployment.yaml
+  - deployment/presto-coordinator-deployment.yaml
+  - deployment/presto-worker-deployment.yaml
+  - service/hive-metastore-service.yaml
+  - service/presto-coordinator-service.yaml
+  - ingress.yaml
+configMapGenerator:
+  - name: hive-metastore-config
+    behavior: create
+    envs:
+      - configuration/hive-metastore.env
+  - name: presto-coordinator-config
+    behavior: create
+    envs:
+      - configuration/presto-coordinator.env
+  - name: presto-worker-config
+    behavior: create
+    envs:
+      - configuration/presto-worker.env

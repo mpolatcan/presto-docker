@@ -15,3 +15,4 @@ data:
   CONNECTORS: |
     hive
   HIVE_METASTORE_URI: "thrift://hive-metastore-svc:9083"
+  HIVE_S3_IAM_ROLE: "arn:aws:iam::123763769084:role/presto-sa-role"

@@ -3,19 +3,16 @@ kind: StatefulSet
 metadata:
   name: presto-coordinator
   labels:
-    app: presto
     unit: coordinator
 spec:
   serviceName: presto-coordinator
   podManagementPolicy: Parallel
   selector:
     matchLabels:
-      app: presto
       unit: coordinator
   template:
     metadata:
       labels:
-        app: presto
         unit: coordinator
     spec:
       serviceAccountName: presto-sa

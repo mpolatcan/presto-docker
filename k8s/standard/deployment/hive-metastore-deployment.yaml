@@ -1,32 +1,30 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
-  name: presto-worker
+  name: hive-metastore
   labels:
     app: presto
-    unit: worker
+    unit: hive-metastore
 spec:
-  serviceName: presto-worker
-  podManagementPolicy: Parallel
   selector:
     matchLabels:
       app: presto
-      unit: worker
+      unit: hive-metastore
   template:
     metadata:
       labels:
         app: presto
-        unit: worker
+        unit: hive-metastore
     spec:
       serviceAccountName: presto-sa
       containers:
-      - name: presto-worker
-        image: mpolatcan/presto:344-java11
+      - name: hive-metastore
+        image: mpolatcan/hive:3.1.2-hadoop-3.1.4-java8
         imagePullPolicy: Always
         envFrom:
           - configMapRef:
-              name: presto-worker-config
+              name: hive-metastore-config
         ports:
-        - containerPort: 8080
+          - containerPort: 9083
       securityContext:
         fsGroup: 1000

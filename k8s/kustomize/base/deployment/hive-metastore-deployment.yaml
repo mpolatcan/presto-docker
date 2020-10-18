@@ -3,24 +3,25 @@ kind: Deployment
 metadata:
   name: hive-metastore
   labels:
-    app: presto
     unit: hive-metastore
 spec:
   selector:
     matchLabels:
-      app: presto
       unit: hive-metastore
   template:
     metadata:
       labels:
-        app: presto
         unit: hive-metastore
     spec:
+      serviceAccountName: presto-sa
       containers:
       - name: hive-metastore
-        image: mpolatcan/hive:2.3.7-hadoop-2.7.7-java8
+        image: mpolatcan/hive:3.1.2-hadoop-3.1.4-java8
+        imagePullPolicy: Always
         envFrom:
           - configMapRef:
               name: hive-metastore-config
         ports:
           - containerPort: 9083
+      securityContext:
+        fsGroup: 1000

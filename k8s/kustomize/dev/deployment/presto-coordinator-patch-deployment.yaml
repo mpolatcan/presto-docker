@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: presto-coordinator
+  labels:
+    unit: coordinator
+spec:
+  template:
+    spec:
+      containers:
+      - name: presto-coordinator
+        image: mpolatcan/presto:344-java11
+        resources:
+          requests:
+            cpu: 500m
+            memory: 512Mi
+          limits:
+            cpu: 1000m
+            memory: 1024Mi

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: presto-coordinator-svc
+  labels:
+    unit: coordinator
+spec:
+  selector:
+    unit: coordinator
+  ports:
+    - port: 8080
+      targetPort: 8080
+  type: ClusterIP
