@@ -76,12 +76,6 @@ log:
   path: "var/log/server.log"
   max-history: "30"
   max-size: "100MB"
-web-ui:
-  authentication.type: "form"
-  enabled: "true"
-  shared-secret: "NULL"
-  session-timeout: "1 day"
-  user: "NULL"
 regex-library: "JONI"
 re2j:
   dfa-states-limit: "2147483647"

@@ -90,11 +90,6 @@ load_config "optimizer.max-reordered-joins" ${OPTIMIZER_MAX_REORDERED_JOINS:=NUL
 load_config "log.path" ${LOG_PATH:=var/log/server.log} "config.properties"
 load_config "log.max-history" ${LOG_MAX_HISTORY:=30} "config.properties"
 load_config "log.max-size" ${LOG_MAX_SIZE:=100MB} "config.properties"
-load_config "web-ui.authentication.type" ${WEB_UI_AUTHENTICATION_TYPE:=form} "config.properties"
-load_config "web-ui.enabled" ${WEB_UI_ENABLED:=true} "config.properties"
-load_config "web-ui.shared-secret" ${WEB_UI_SHARED_SECRET:=NULL} "config.properties"
-load_config "web-ui.session-timeout" ${WEB_UI_SESSION_TIMEOUT:=1 day} "config.properties"
-load_config "web-ui.user" ${WEB_UI_USER:=NULL} "config.properties"
 load_config "regex-library" ${REGEX_LIBRARY:=JONI} "config.properties"
 load_config "re2j.dfa-states-limit" ${RE2J_DFA_STATES_LIMIT:=2147483647} "config.properties"
 load_config "re2j.dfa-retries" ${RE2J_DFA_RETRIES:=5} "config.properties"
@@ -445,7 +440,7 @@ if [[ "${CONNECTORS}" != "" ]]; then
     for CONNECTOR_CONFIG_FILE in ${CONNECTOR_CONFIG_FILES[@]}; do
         for CONNECTOR in ${CONNECTORS[@]}; do
             if [[ "${CONNECTOR}.properties" != "${CONNECTOR_CONFIG_FILE}" ]]; then
-                echo "Removing connector config: \"${CONNECTOR}.properties\""
+                echo "Removing connector config: \"${CONNECTOR_CONFIG_FILE}\""
                 rm ${PRESTO_CONNECTOR_CONF_DIR}/${CONNECTOR_CONFIG_FILE}
             fi
         done
