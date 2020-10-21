@@ -17,7 +17,7 @@ http-server:
     compression.enabled: "true"
     path: "var/log/http-request.log"
     max-history: "15"
-    max-size: "unlimited"
+    max-size: "NULL"
 query:
   max-memory: "50GB"
   max-total-memory: "NULL"
@@ -68,7 +68,7 @@ optimizer:
   dictionary-aggregation: "false"
   optimize-hash-generation: "true"
   optimize-metadata-queries: "false"
-  push-aggregation-through-join: "true"
+  push-aggregation-through-outer-join: "true"
   push-table-write-through-union: "true"
   join-reordering-strategy: "AUTOMATIC"
   max-reordered-joins: "NULL"
